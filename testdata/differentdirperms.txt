@@ -1,0 +1,8 @@
+exec mkdir a b
+chmod 700 a
+chmod 500 b
+hash a
+cp stdout aout
+hash b
+cp stdout bout
+! exec cmp aout bout

@@ -1,0 +1,6 @@
+exec mkdir a b
+hash a
+cp stdout aout
+hash b
+cp stdout bout
+cmp aout bout

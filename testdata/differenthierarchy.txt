@@ -1,0 +1,10 @@
+hash a
+cp stdout aout
+hash b
+cp stdout bout
+! exec cmp aout bout
+
+-- a --
+Hello
+-- b/c --
+Hi
