@@ -491,13 +491,7 @@ func (op *oper) outputsMatch(seq *operSeq) error {
 		}
 	case operRead:
 		if op.sutn != op.refn {
-			if int(op.parent.flags)&syscall.O_APPEND == 0 {
-				return errors.New("read: number of bytes mismatch")
-			} else {
-				// Known bug, seemingly in v9fs, to be confirmed.
-				// TODO(nicolagi): Investigate more.
-				logWarn("oper.outputsMatch: read: ignoring read mismatch in O_APPEND mode")
-			}
+			return errors.New("read: number of bytes mismatch")
 		} else if !bytes.Equal(op.sutbuf, op.refbuf) {
 			return fmt.Errorf("read: mismatch sut=%q ref=%q", op.sutbuf, op.refbuf)
 		}
